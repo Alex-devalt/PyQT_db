@@ -4,6 +4,7 @@ import argparse
 import json
 import logging
 import select
+import threading
 import time
 import logs.config_server_log
 from descriptors import PortDescriptor
@@ -12,6 +13,7 @@ from errors import IncorrectDataRecivedError
 from common.variables import *
 from common.utils import *
 from decos import log
+from server_db import ServerDB
 
 # Server logger initialization
 logger = logging.getLogger('server_dist')
@@ -29,11 +31,12 @@ def arg_parser():
     return listen_address, listen_port
 
 
-class Server(metaclass=ServerVerifier):
+class Server(threading.Thread, metaclass=ServerVerifier):
     port = PortDescriptor()
 
-    def __init__(self, listen_address, listen_port):
+    def __init__(self, listen_address, listen_port, database):
         # Connection parameters
+        self.database = database
         self.addr = listen_address
         self.port = listen_port
 
@@ -46,12 +49,15 @@ class Server(metaclass=ServerVerifier):
         # Dict of names and corresponding sockets
         self.names = dict()
 
+        super().__init__()
+
     def init_socket(self):
-        # logger.info(
-        #     f'Start server, port for connections: {self.port},  address to connect to: {self.addr}. If address not '
-        #     f'specified- connections from any address are allowed')
+        logger.info(
+            f'Start server, port for connections: {self.port},  address to connect to: {self.addr}. If address not '
+            f'specified- connections from any address are allowed')
         # Getting socket ready
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        transport.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         transport.bind((self.addr, self.port))
         transport.settimeout(0.5)
 
@@ -59,7 +65,7 @@ class Server(metaclass=ServerVerifier):
         self.sock = transport
         self.sock.listen()
 
-    def main_loop(self):
+    def run(self):
 
         self.init_socket()
 
@@ -71,8 +77,7 @@ class Server(metaclass=ServerVerifier):
             except OSError:
                 pass
             else:
-                # logger.info(f'Connection established with {client_address}')
-                logger.info(f' ')
+                logger.info(f'Connection established with {client_address}')
                 self.clients.append(client)
 
             recv_data_lst = []
@@ -133,6 +138,8 @@ class Server(metaclass=ServerVerifier):
             # Otherwise send the response and close the connection
             if message[USER][ACCOUNT_NAME] not in self.names.keys():
                 self.names[message[USER][ACCOUNT_NAME]] = client
+                client_ip, client_port = client.getpeername()
+                self.database.user_login(message[USER][ACCOUNT_NAME], client_ip, client_port)
                 send_message(client, RESPONSE_200)
             else:
                 response = RESPONSE_400
@@ -154,6 +161,7 @@ class Server(metaclass=ServerVerifier):
         elif ACTION in message \
                 and message[ACTION] == EXIT \
                 and ACCOUNT_NAME in message:
+            self.database.user_logout(message[ACCOUNT_NAME])
             self.clients.remove(self.names[ACCOUNT_NAME])
             self.names[ACCOUNT_NAME].close()
             del self.names[ACCOUNT_NAME]
@@ -166,12 +174,54 @@ class Server(metaclass=ServerVerifier):
             return
 
 
+def print_help():
+    print('Available commands')
+    print('users - list of all users')
+    print('connected - list of connected users')
+    print('history - users logins history')
+    print('exit - exit server')
+    print('help - help on available commands')
+
+
 def main():
     # Parsing command line args, if not provided - use default.
     listen_address, listen_port = arg_parser()
 
-    server = Server(listen_address, listen_port)
-    server.main_loop()
+    # db initialization
+    database = ServerDB()
+
+    server = Server(listen_address, listen_port, database)
+    server.daemon = True
+    server.start()
+
+    print_help()
+
+    # Server's main loop
+    while True:
+        command = input('Enter a command: ')
+        if command == 'help':
+            print_help()
+        elif command == 'exit':
+            break
+        elif command == 'users':
+            for user in database.get_users():
+                print(f'User {user["name"]}, last seen: {user["last_login"]}')
+        elif command == 'connected':
+            active_users = database.get_active_users()
+            if active_users:
+                for user in database.get_active_users():
+                    print(
+                        f'User {user["name"]}, connected at {user["ip"]}:{user["port"]}, logged at {user["login_time"]}')
+            else:
+                print('There are no currently connected users!')
+        elif command == 'history':
+            name = input('Enter username. '
+                         '(for all users history press Enter): ')
+            for user in database.get_users_history(name):
+                print(
+                    f'User: {user["name"]} last login: {user["last_login"]}. Connection params: {user["ip"]}:{user["port"]}')
+        else:
+            print('Unrecognized command')
 
 
 if __name__ == '__main__':
