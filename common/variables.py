@@ -12,6 +12,7 @@ MAX_PACKAGE_LENGTH = 1024
 ENCODING = 'utf-8'
 # Текущий уровень логирования
 LOGGING_LEVEL = logging.DEBUG
+SERVER_DATABASE = 'sqlite+pysqlite:///server_db.db3'
 
 # Прококол JIM основные ключи:
 ACTION = 'action'

@@ -7,7 +7,7 @@ class ServerVerifier(type):
         attributes = []  # list of attributes inside class functions
         for attr in class_attrs:
             if callable(class_attrs[attr]):
-                print(attr)
+
                 instructions = dis.get_instructions(class_attrs[attr])
                 for i in instructions:
                     # opname - operation name
@@ -17,8 +17,7 @@ class ServerVerifier(type):
                     elif i.opname == 'LOAD_ATTR':
                         if i.argval not in attributes:
                             attributes.append(i.argval)
-        print(methods)
-        print(attributes)
+
         if 'connect' in methods:
             raise TypeError('Use of connect method is not allowed in Server class!')
         # TCP protocol check
