@@ -14,7 +14,7 @@ class TestClass(unittest.TestCase):
         self.db.user_login('name_test', '127.0.0.1', 6000)
         query = self.db.session.query(self.db.User).filter_by(username='name_test')
         query_active = self.db.session.query(self.db.ActiveUser).filter_by(id=1)
-        query_history = self.db.session.query(self.db.UserHistory).filter_by(port=6000)
+        query_history = self.db.session.query(self.db.UserLoginHistory).filter_by(port=6000)
 
         self.assertEqual('name_test', query.first().username)
         self.assertEqual(1, query_active.first().id)

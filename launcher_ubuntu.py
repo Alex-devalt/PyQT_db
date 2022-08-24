@@ -16,7 +16,7 @@ BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_subprocess(file_with_args):
-    sleep(0.2)
+    sleep(1)
     file_full_path = f"{PYTHON_PATH} {BASE_PATH}/{file_with_args}"
     args = ["gnome-terminal", "--disable-factory", "--", "bash", "-c", file_full_path]
     return subprocess.Popen(args, preexec_fn=os.setpgrp)
@@ -24,7 +24,7 @@ def get_subprocess(file_with_args):
 
 process = []
 while True:
-    TEXT_FOR_INPUT = "Выберите действие: q - выход, s - запустить сервер и клиенты, x - закрыть все окна: "
+    TEXT_FOR_INPUT = "Choose action: q - exit, s - start server and clients, x - close all windows: "
     action = input(TEXT_FOR_INPUT)
 
     if action == "q":
