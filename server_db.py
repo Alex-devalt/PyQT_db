@@ -10,6 +10,10 @@ import datetime
 class ServerDB:
     Base = declarative_base()
 
+
+class ServerDB:
+    Base = declarative_base()
+
     class User(Base):
         __tablename__ = 'users'
         id = Column(Integer, primary_key=True)
@@ -68,6 +72,7 @@ class ServerDB:
         user = Column(ForeignKey('users.id'))
         sent = Column('sent', Integer)
         accepted = Column('accepted', Integer)
+
         def __init__(self, user):
             self.id = None
             self.user = user
@@ -201,16 +206,16 @@ class ServerDB:
         return query.all()
 
     if __name__ == '__main__':
-    # #     db = ServerDB()
-    # #     db.user_login('test1', '127.0.0.1', 6000)
-    # #     db.user_login('test2', '192.168.1.5', 7777)
-    # #     db.user_login('test3', '192.168.1.5', 6001)
-    # #     print(db.get_users_history(username='client_3'))
-    # #     db.user_logout('test3')
-    # #     print(db.get_active_users())
-    # #     db.user_logout('test2')
-    # #     print(db.get_users_history())
-    #
+        # db = ServerDB()
+        # db.user_login('test1', '127.0.0.1', 6000)
+        # db.user_login('test2', '192.168.1.5', 7777)
+        # db.user_login('test3', '192.168.1.5', 6001)
+        # print(db.get_users_history(username='client_3'))
+        # db.user_logout('test3')
+        # print(db.get_active_users())
+        # db.user_logout('test2')
+        # print(db.get_users_history())
+
         test_db = ServerDB('_server_db.db3')
         test_db.user_login('1111', '192.168.1.113', 8080)
         test_db.user_login('McG2', '192.168.1.113', 8081)
