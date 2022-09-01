@@ -1,6 +1,6 @@
 import logging
 
-DEFAULT_PORT = 7000
+DEFAULT_PORT = 7777
 # default ip address for client connection
 DEFAULT_IP_ADDRESS = '127.0.0.1'
 MAX_CONNECTIONS = 5
@@ -17,6 +17,8 @@ USER = 'user'
 ACCOUNT_NAME = 'account_name'
 SENDER = 'from'
 DESTINATION = 'to'
+DATA = 'bin'
+PUBLIC_KEY = 'pubkey'
 
 # other keys:
 PRESENCE = 'presence'
@@ -30,6 +32,7 @@ LIST_INFO = 'data_list'
 REMOVE_CONTACT = 'remove'
 ADD_CONTACT = 'add'
 USERS_REQUEST = 'get_users'
+PUBLIC_KEY_REQUEST = 'pubkey_need'
 
 # Response dicts:
 RESPONSE_200 = {RESPONSE: 200}
@@ -39,4 +42,12 @@ RESPONSE_202 = {RESPONSE: 202,
 RESPONSE_400 = {
     RESPONSE: 400,
     ERROR: None
+}
+RESPONSE_205 = {
+    RESPONSE: 205
+}
+
+RESPONSE_511 = {
+    RESPONSE: 511,
+    DATA: None
 }

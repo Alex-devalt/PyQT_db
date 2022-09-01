@@ -2,6 +2,8 @@ from pathlib import Path
 
 from sqlalchemy import create_engine, Table, Column, Integer, String, Text, MetaData, DateTime
 from sqlalchemy.orm import mapper, sessionmaker
+
+from client.database import ClientDatabase
 from common.variables import *
 import datetime
 

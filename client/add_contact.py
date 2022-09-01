@@ -16,7 +16,7 @@ class AddContactDialog(QDialog):
         self.transport = transport
         self.database = database
 
-        self.setFixedSize(350, 120)
+        self.setFixedSize(350, 300)
         self.setWindowTitle('Выберите контакт для добавления:')
         # Delete the dialog if the window was closed prematurely
         self.setAttribute(Qt.WA_DeleteOnClose)
