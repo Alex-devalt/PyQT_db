@@ -1,0 +1,38 @@
+2022-08-23 17:22:31,105 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 18:27:30,014 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 18:27:30,123 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 18:27:48,635 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 18:27:48,667 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 18:28:38,716 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-23 18:48:11,146 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 18:48:11,177 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 18:48:37,785 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-23 18:59:44,861 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 18:59:44,907 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 19:05:42,386 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 19:05:42,418 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 19:13:12,886 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 19:13:13,104 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 19:40:45,674 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 19:40:45,705 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-23 19:46:54,265 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-23 20:04:05,942 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-23 20:04:05,989 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-24 13:43:13,138 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-24 13:43:13,231 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-24 16:03:32,535 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:03:32,566 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:03:32,910 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:04:00,456 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:04:00,497 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:04:22,177 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:05:25,633 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:05:25,868 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:05:25,915 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:13:36,548 DEBUG decos.py Была вызвана функция arg_parser c параметрами ('7777', '') , {}. Вызов из модуля __main__
+2022-08-24 16:13:36,579 INFO server.py Start server, port for connections: 7777,  address to connect to: . If address not specified- connections from any address are allowed
+2022-08-24 16:55:37,061 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:55:37,077 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:55:37,452 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:58:31,831 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
+2022-08-24 16:59:12,937 DEBUG decos.py Была вызвана функция arg_parser c параметрами () , {}. Вызов из модуля __main__
